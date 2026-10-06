@@ -18,6 +18,10 @@ class User(db.Model):
     is_varified = db.Column(db.Boolean, default=False)
     is_active = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7007ecfb34dfe3dae4dfeb0dad15e94b9de1980e
     # def __repr__(self):
     #     return f"<User {self.full_name}>"
 
