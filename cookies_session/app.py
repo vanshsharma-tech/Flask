@@ -13,7 +13,7 @@ def home():
 @app.route('/set-cookie')
 def setCookie():
     response = make_response("Cookie Set")
-    response.set_cookie('full_name', 'Vansh Sharma')
+    response.set_cookie('full_name', 'Vansh Sharma',max_age=60)
     return response
 
 @app.route('/get-cookie')
@@ -45,6 +45,13 @@ def getSession():
         return f"Welcome {username} , Email : {email}"
     else:
         return f"Session not found"
+
+@app.route("/clear-session")
+def deleteSession():
+    # session.pop("email")
+    session.clear()
+    return f"Session removed successfully"
+
 
 if __name__ == '__main__':
     app.run(debug=True)
