@@ -1,0 +1,19 @@
+<form
+  style="margin: 20px"
+  action="/delete-contact/{{ contact[0] }}"
+  method="POST"
+>
+  <p style="color: red">Are you sure you want to delete this contact?</p>
+  <button
+    style="
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    "
+    type="submit"
+  >
+    Yes, Delete
+  </button>
+</form>

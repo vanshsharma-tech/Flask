@@ -1,0 +1,94 @@
+{% extends "./base.html" %} {% block title %}Edit Form{% endblock title %}
+{%block content %} 
+<div class="container py-5">
+  <!-- Header -->
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">Contact Us</h1>
+    <p class="lead text-muted">
+      Have a question or feedback? We'd love to hear from you.
+    </p>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4 p-md-5">
+          <h3 class="fw-bold mb-4">Send Us a Message</h3>
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %} {% endif %} {% endwith %}
+          <form action="/edit-contact/{{ contact[0] }}" method="POST">
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label fw-semibold"> Name </label>
+
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="name"
+                name="full_name"
+                value="{{ contact[1] }}"
+                placeholder="Enter your name"
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label fw-semibold">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                class="form-control form-control-lg"
+                id="email"
+                name="email"
+                value ="{{ contact[2] }}"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label fw-semibold">
+                Phone Number
+              </label>
+
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="phone"
+                name="phone"
+                value="{{ contact[3] }}"
+                placeholder="Enter your phone number"
+              />
+            </div>
+
+            <!-- Message -->
+            <div class="mb-4">
+              <label for="message" class="form-label fw-semibold">
+                Message
+              </label>
+
+              <textarea
+                class="form-control"
+                id="message"
+                name="msg"
+                rows="5"
+                placeholder="Enter your message"
+              >{{ contact[4] }}</textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-warning text-white btn-lg">
+                Update Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
